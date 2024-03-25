@@ -10,6 +10,8 @@ A cross-platofrm desktop app to manage your ports made with [Dioxus](https://dio
 ```sh
 git clone repo
 cd repo
+# run to start the tailwind css compile
+npx tailwindcss -i ./input.css -o ./public/tailwind.css --watch
 dx serve --hot-reload --platform desktop
 # alternatively, you could run
 cargo run

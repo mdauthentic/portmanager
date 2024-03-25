@@ -3,7 +3,7 @@ use std::{
     process::{Command, Stdio},
 };
 
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq, Eq, Hash)]
 pub struct ProcessDetail {
     pub process_name: String,
     pub pid: String,

@@ -1,3 +1,5 @@
+use std::collections::HashSet;
+
 use crate::{
     icon::*,
     parser::{parse_process, ProcessDetail},
@@ -36,7 +38,12 @@ pub fn SideBar() -> Element {
 }
 
 pub fn MainContent() -> Element {
-    let proc_list = parse_process();
+    let proc_list = parse_process()
+        .into_iter()
+        .collect::<HashSet<_>>()
+        .into_iter()
+        .collect::<Vec<_>>();
+
     let mut search_input = use_signal(|| "".to_string());
 
     rsx!(
@@ -115,7 +122,11 @@ fn ProcessList(lsof_list: Vec<ProcessDetail>) -> Element {
                                 td { class: "px-6 py-3 whitespace-nowrap", "{item.node}" }
                                 td { class: "px-6 py-3 whitespace-nowrap", "{item.name}" }
                                 td { class: "px-6 py-3",
-                                    a { href: "/", DeleteIcon {} }
+                                    a {
+                                        href: "/",
+                                        //onclick: move || {}
+                                        DeleteIcon {}
+                                    }
                                 }
                             }
                         }

@@ -73,7 +73,18 @@ pub fn MainContent() -> Element {
                 div {
                     class: "col-span-3 border-r border-[rgba(255,255,255,0.15)]",
                     div {
-                        class: "p-6",
+                        class: "flex justify-between px-6 pt-4",
+                        div {}
+                        div {
+                            button {
+                                class: "inline-flex items-center w-full bg-[rgba(255,255,255,0.1)] border-r border-solid border-[rgba(255,255,255,0.05)] text-xs px-4 py-2 text-center rounded-md",
+                                span {class: "pr-2", RefreshIcon {}},
+                                "Refresh"
+                            }
+                        }
+                    }
+                    div {
+                        class: "px-6 pt-2",
                         if !search_input.to_string().is_empty() {
                             SearchResult{lsof_list: proc_list.clone(), search_text: search_input.to_string()}
                         } else {
